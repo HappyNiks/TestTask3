@@ -1,0 +1,16 @@
+SELECT 
+	A,
+    B,
+    C,
+    CASE
+    	WHEN A = C AND A = B AND B = C THEN 'Равносотронний'
+        WHEN A = C OR A = B OR B = C THEN 'Равнобедренный'
+        WHEN A + C <= B OR A + B <= C OR B + C <= A THEN 'Не треугольник'
+        WHEN 
+        	(A <> C AND A <> B AND B <> C) 
+        	AND 
+            (A + C > B OR A + B > C OR B + C > A)
+            THEN 'Разносторонний'
+        ELSE null
+    END AS Triangle
+FROM triangles
